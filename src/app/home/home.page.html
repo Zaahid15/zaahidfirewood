@@ -17,7 +17,7 @@
       <div class="hero-shade"></div>
       <div class="hero-content">
         <p class="eyebrow"><span></span> GOOD WOOD. GOOD HEAT. GOOD COMPANY.</p>
-        <h1 id="hero-title">A better kind<br />of <em>warmth.</em></h1>
+        <h1 id="hero-title">Premium Wood <br />of <em>Premium Fires.</em></h1>
         <p class="hero-copy">From a slow evening by the fire to a long lunch around the grill, find the right fuel for your kind of gathering.</p>
         <div class="hero-actions">
           <a class="button button-light" href="#products">Find your firewood <ion-icon name="arrow-down-outline" aria-hidden="true"></ion-icon></a>
@@ -37,7 +37,7 @@
     <section id="products" class="products-section" aria-labelledby="products-title">
       <div class="section-heading">
         <div><p class="eyebrow eyebrow-green"><span></span> THE GOOD STUFF</p><h2 id="products-title">Pick your <em>kind of fire.</em></h2></div>
-        <p class="section-intro">Different woods, different ways to unwind. Find your favourite, or ask us what’s burning best.</p>
+        <p class="section-intro">Nou gaan ons braai</p>
       </div>
 
       <div class="catalog-toolbar">
@@ -63,6 +63,9 @@
               <div class="product-info">
                 <div class="product-title-row"><h3>{{ product.name }}</h3><ion-icon name="sparkles-outline" aria-hidden="true"></ion-icon></div>
                 <p>{{ product.description }}</p>
+                @if (product.type === 'Firewood') {
+                  <button class="wood-info-trigger" type="button" (click)="openWoodInfo(product)" [attr.aria-label]="'More about ' + product.name">More about this wood <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></button>
+                }
                 <div class="product-card-footer"><span><small>ASK ABOUT</small>{{ product.bestFor }}</span><a [href]="whatsappLink(product.name)" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Ask about ' + product.name + ' on WhatsApp'"><ion-icon name="logo-whatsapp" aria-hidden="true"></ion-icon></a></div>
               </div>
             </article>
@@ -76,7 +79,7 @@
 
     <section id="about" class="story-section" aria-labelledby="story-title">
       <div class="story-image" role="img" aria-label="Glowing charcoal embers on a grill grate"></div>
-      <div class="story-copy"><p class="eyebrow eyebrow-light"><span></span> IT’S THE LITTLE THINGS</p><h2 id="story-title">The best moments<br />happen <em>around it.</em></h2><p>Hands warming around a mug. One more story before bed. The first bite straight off the grill. However you gather, a good fire has a way of making it feel like an occasion.</p><a class="story-link" [href]="whatsappLink()" target="_blank" rel="noopener noreferrer">Chat about your fuel <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a></div>
+      <div class="story-copy"><p class="eyebrow eyebrow-light"><span></span> IT’S THE LITTLE THINGS</p><h2 id="story-title">“Jy krap nie <br />aan ’n ander man <em>se vuur nie,”</em></h2><p>- a South African Proverb</p><a class="story-link" [href]="whatsappLink()" target="_blank" rel="noopener noreferrer">Chat about your fuel <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a></div>
       <span class="story-caption">A LITTLE WARMTH GOES A LONG WAY</span>
     </section>
 
@@ -85,6 +88,18 @@
       <div class="whatsapp-panel"><p>Message us on WhatsApp and tell us what you need. We’ll get back to you about availability.</p><a class="button button-dark" [href]="whatsappLink()" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-whatsapp" aria-hidden="true"></ion-icon> Chat on WhatsApp <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a><span>+27 63 124 4994</span></div>
     </section>
   </main>
+
+  @if (selectedWood; as wood) {
+    <div class="wood-modal-backdrop" role="presentation" (click)="closeWoodInfo()">
+      <section class="wood-modal" role="dialog" aria-modal="true" aria-labelledby="wood-modal-title" (click)="$event.stopPropagation()" (keydown.escape)="closeWoodInfo()">
+        <button class="wood-modal-close" type="button" (click)="closeWoodInfo()" aria-label="Close wood details">Close</button>
+        <p class="eyebrow eyebrow-green"><span></span> WOOD GUIDE</p>
+        <h2 id="wood-modal-title">{{ wood.name }}</h2>
+        <p class="wood-modal-copy">{{ wood.woodDetails }}</p>
+        <a class="button button-dark" [href]="whatsappLink(wood.name)" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-whatsapp" aria-hidden="true"></ion-icon> Ask us about {{ wood.name }}</a>
+      </section>
+    </div>
+  }
 
   <footer class="site-footer"><a class="brand footer-brand" href="#top" aria-label="Zaahid Firewood home"><img class="brand-logo" src="assets/zaahid-firewood-logo.png" alt="Zaahid's Firewood" /></a><p>A little warmth goes a long way.</p><a class="back-top" href="#top">Back to the top <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a><small>© {{ currentYear }} Zaahid Firewood</small></footer>
 </ion-content>

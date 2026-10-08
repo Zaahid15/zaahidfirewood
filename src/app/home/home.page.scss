@@ -100,6 +100,9 @@ app-home button { color: inherit; }
 .product-title-row h3 { margin: 0; font-family: var(--serif); font-size: 25px; font-weight: 400; }
 .product-title-row ion-icon { color: #c28b2c; font-size: 16px; }
 .product-info > p { min-height: 36px; margin: 8px 0 15px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+.wood-info-trigger { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; padding: 0 0 4px; border: 0; border-bottom: 1px solid #d6a644; background: transparent; color: #805b19; font-size: 10px; font-weight: 700; cursor: pointer; }
+.wood-info-trigger ion-icon { font-size: 13px; }
+.wood-info-trigger:hover { color: var(--accent-deep); }
 .product-card-footer { display: flex; align-items: end; justify-content: space-between; gap: 10px; padding-top: 12px; border-top: 1px solid #eee7d5; }
 .product-card-footer > span { color: #5b4d44; font-size: 9px; }
 .product-card-footer small { display: block; margin-bottom: 5px; color: #928177; font-size: 8px; font-weight: 700; letter-spacing: .08em; }
@@ -125,6 +128,14 @@ app-home button { color: inherit; }
 .story-copy > p:not(.eyebrow) { max-width: 380px; margin: 19px 0 0; color: #ead8c9; font-size: 11px; line-height: 1.9; }
 .story-link { margin-top: 25px; padding-bottom: 7px; border-bottom: 1px solid #d6a644; color: #fff2e5; font-size: 10px; font-weight: 700; }
 .story-caption { position: absolute; bottom: 19px; left: 6%; color: #fff4e8; font-size: 8px; font-weight: 600; letter-spacing: .13em; }
+
+.wood-modal-backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 20px; background: rgb(18 14 9 / 72%); animation: rise-in .18s ease-out both; }
+.wood-modal { position: relative; width: min(100%, 520px); max-height: min(80vh, 620px); overflow-y: auto; padding: clamp(26px, 6vw, 42px); border: 1px solid #e7d8b4; background: #fff8e7; box-shadow: 0 22px 70px rgb(0 0 0 / 35%); color: var(--ink); }
+.wood-modal-close { position: absolute; top: 15px; right: 16px; padding: 7px 9px; border: 1px solid #e7d8b4; background: transparent; color: var(--ink); font-size: 10px; font-weight: 700; cursor: pointer; }
+.wood-modal .eyebrow { margin-right: 62px; color: var(--accent); }
+.wood-modal h2 { margin: 0; color: var(--ink); font-family: var(--serif); font-size: clamp(32px, 7vw, 46px); font-weight: 400; line-height: 1.1; }
+.wood-modal-copy { margin: 17px 0 25px; color: #5c4d3d; font-size: 13px; line-height: 1.8; }
+.wood-modal .button { width: 100%; }
 
 .contact-section { max-width: 1440px; margin: 0 auto; padding: 100px 15.5%; display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 9%; scroll-margin-top: 25px; }
 .contact-heading h2 { font-size: clamp(40px, 4.5vw, 57px); }
