@@ -1,0 +1,110 @@
+<ion-content [fullscreen]="true" class="storefront-content">
+  <div class="announcement">
+    <span>Thoughtful fuel for fires, homes & open-air cooking</span>
+    <a href="#products">Explore the range <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Zaahid Firewood home">
+      <span class="brand-mark"><ion-icon name="flame-outline" aria-hidden="true"></ion-icon></span>
+      <span class="brand-name">zaahid<span>firewood</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#products">Our products</a>
+      <a href="#about">The good stuff</a>
+      <a href="#contact">Get in touch</a>
+    </nav>
+    <a class="header-cta" href="#contact">Ask about availability <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a>
+    <a class="mobile-menu" href="#products" aria-label="Browse products"><ion-icon name="menu-outline" aria-hidden="true"></ion-icon></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-image" role="img" aria-label="Sunlit woodland, the source of a good firewood story"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> GOOD WOOD. GOOD HEAT. GOOD COMPANY.</p>
+        <h1 id="hero-title">A better kind<br />of <em>warmth.</em></h1>
+        <p class="hero-copy">From a slow evening by the fire to a long lunch around the grill, find the right fuel for your kind of gathering.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#products">Find your firewood <ion-icon name="arrow-down-outline" aria-hidden="true"></ion-icon></a>
+          <a class="hero-secondary" href="#contact">Looking for charcoal? <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a>
+        </div>
+      </div>
+      <div class="hero-note"><span class="hero-note-mark"><ion-icon name="leaf-outline" aria-hidden="true"></ion-icon></span><span>For fires at home<br />and food out in the open</span></div>
+      <span class="hero-index">01 <span></span> 03</span>
+    </section>
+
+    <section class="benefits" aria-label="Our approach">
+      <div class="benefit"><span class="benefit-icon"><ion-icon name="leaf-outline" aria-hidden="true"></ion-icon></span><span><strong>Good wood, thoughtfully chosen</strong><small>A choice of familiar firewood types</small></span></div>
+      <div class="benefit"><span class="benefit-icon"><ion-icon name="flame-outline" aria-hidden="true"></ion-icon></span><span><strong>Something for every fire</strong><small>Firewood for home and charcoal for cooking</small></span></div>
+      <div class="benefit"><span class="benefit-icon"><ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon></span><span><strong>Ask before you order</strong><small>Check current stock and availability</small></span></div>
+    </section>
+
+    <section id="products" class="products-section" aria-labelledby="products-title">
+      <div class="section-heading">
+        <div><p class="eyebrow eyebrow-green"><span></span> THE GOOD STUFF</p><h2 id="products-title">Pick your <em>kind of fire.</em></h2></div>
+        <p class="section-intro">Different woods, different ways to unwind. Find your favourite, or ask us what’s burning best.</p>
+      </div>
+
+      <div class="catalog-toolbar">
+        <div class="category-tabs" role="group" aria-label="Filter products by category">
+          @for (category of categories; track category) {
+            <button type="button" [class.active]="selectedCategory === category" [attr.aria-pressed]="selectedCategory === category" (click)="selectCategory(category)">{{ category }}</button>
+          }
+        </div>
+        <label class="search-box">
+          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+          <input type="search" placeholder="Find your favourite…" aria-label="Search firewood and charcoal" [(ngModel)]="searchTerm" />
+        </label>
+      </div>
+
+      @if (filteredProducts.length) {
+        <div class="product-grid" aria-live="polite">
+          @for (product of filteredProducts; track product.name) {
+            <article class="product-card">
+              <div class="product-photo" role="img" [attr.aria-label]="product.imageAlt" [style.background-image]="'url(https://images.unsplash.com/' + product.image + '?auto=format&fit=crop&w=900&q=85)'">
+                <span class="product-type"><ion-icon [name]="product.type === 'Charcoal' ? 'flame-outline' : 'leaf-outline'" aria-hidden="true"></ion-icon>{{ product.type }}</span>
+                @if (product.badge) { <span class="product-badge">{{ product.badge }}</span> }
+                <span class="product-number">{{ product.type === 'Charcoal' ? '06' : (products.indexOf(product) + 1).toString().padStart(2, '0') }}</span>
+              </div>
+              <div class="product-info">
+                <div class="product-title-row"><h3>{{ product.name }}</h3><ion-icon name="sparkles-outline" aria-hidden="true"></ion-icon></div>
+                <p>{{ product.description }}</p>
+                <div class="product-card-footer"><span><small>LOVELY FOR</small>{{ product.bestFor }}</span><button type="button" (click)="requestProduct(product.name)" [attr.aria-label]="'Ask about ' + product.name"><ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></button></div>
+              </div>
+            </article>
+          }
+        </div>
+      } @else {
+        <div class="empty-state"><ion-icon name="search-outline" aria-hidden="true"></ion-icon><p>No matches just yet.</p><button type="button" (click)="searchTerm = ''; selectCategory('All products')">Show all products</button></div>
+      }
+      <p class="availability-note"><ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon> Product availability and pack sizes can vary. <a href="#contact">Ask us what’s in stock <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a></p>
+    </section>
+
+    <section id="about" class="story-section" aria-labelledby="story-title">
+      <div class="story-image" role="img" aria-label="A peaceful green woodland"></div>
+      <div class="story-copy"><p class="eyebrow eyebrow-light"><span></span> IT’S THE LITTLE THINGS</p><h2 id="story-title">The best moments<br />happen <em>around it.</em></h2><p>Hands warming around a mug. One more story before bed. The first bite straight off the grill. However you gather, a good fire has a way of making it feel like an occasion.</p><a class="story-link" href="#contact">Let’s find your fuel <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a></div>
+      <span class="story-caption">A LITTLE WARMTH GOES A LONG WAY</span>
+    </section>
+
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="contact-heading"><p class="eyebrow eyebrow-green"><span></span> A QUESTION? A CRACKLING IDEA?</p><h2 id="contact-title">Let’s talk <em>firewood.</em></h2><p>Tell us what you have in mind. We’ll help you check what’s available and find the right fit.</p><div class="contact-promise"><ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon> No guesswork. Just a friendly enquiry.</div></div>
+      <form class="enquiry-form" (ngSubmit)="submitEnquiry()">
+        <label>Your name<input type="text" name="name" [(ngModel)]="quoteName" placeholder="How should we address you?" required autocomplete="name" /></label>
+        <label>Phone number<input type="tel" name="phone" [(ngModel)]="quotePhone" placeholder="The best number to reach you" required autocomplete="tel" /></label>
+        <label>What are you looking for?
+          <select name="product" [(ngModel)]="quoteProduct">
+            <option value="">I’m open to suggestions</option>
+            @for (product of products; track product.name) { <option [value]="product.name">{{ product.name }}</option> }
+          </select>
+        </label>
+        <button class="button button-dark" type="submit">Start an enquiry <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></button>
+        <p class="form-note">This opens your email app with the enquiry ready to send.</p>
+        @if (quoteSent) { <p class="sent-note" role="status">Your enquiry is ready in your email app. Add our contact email to send it.</p> }
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark"><ion-icon name="flame-outline" aria-hidden="true"></ion-icon></span><span class="brand-name">zaahid<span>firewood</span></span></a><p>A little warmth goes a long way.</p><a class="back-top" href="#top">Back to the top <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a><small>© {{ currentYear }} Zaahid Firewood</small></footer>
+</ion-content>
