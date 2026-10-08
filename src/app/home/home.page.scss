@@ -37,7 +37,7 @@ app-home button { color: inherit; }
 
 .hero { min-height: min(650px, 76vh); min-height: min(650px, 76svh); position: relative; overflow: hidden; display: flex; align-items: center; background: var(--accent-deep); color: #fff; }
 .hero-image, .hero-shade { position: absolute; inset: 0; }
-.hero-image { background: url('https://images.unsplash.com/photo-1723990073450-7b57bcbfbe13?auto=format&fit=crop&w=2200&q=90') center 53% / cover; transform: scale(1.025); animation: settle-in 1.1s ease-out both; }
+.hero-image { background: url('https://images.unsplash.com/photo-1555919040-66d6d368cfc4?auto=format&fit=crop&w=2200&q=90') center 53% / cover; transform: scale(1.025); animation: settle-in 1.1s ease-out both; }
 .hero-shade { background: linear-gradient(90deg, rgb(38 20 13 / 79%) 0%, rgb(55 30 18 / 62%) 43%, rgb(59 34 20 / 15%) 100%), linear-gradient(0deg, rgb(45 23 13 / 24%), transparent 40%); }
 .hero-content { position: relative; z-index: 1; width: min(610px, 62%); margin-left: 11.2%; padding: 66px 0 76px; animation: rise-in .7s .08s ease-out both; }
 .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 20px; color: #f3c9a7; font-size: 9px; font-weight: 700; letter-spacing: .13em; }
@@ -95,7 +95,7 @@ app-home button { color: inherit; }
 .product-type ion-icon { font-size: 12px; }
 .product-badge { top: 13px; right: 13px; padding: 7px 9px; background: #f3c49d; color: #63331e; font-size: 8px; font-weight: 700; }
 .product-number { right: 13px; bottom: 11px; color: white; font-family: var(--serif); font-size: 23px; }
-.product-info { padding: 17px 17px 15px; }
+.product-info { padding: 17px 17px 15px; color: #34251f; }
 .product-title-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .product-title-row h3 { margin: 0; font-family: var(--serif); font-size: 25px; font-weight: 400; }
 .product-title-row ion-icon { color: #c77849; font-size: 16px; }
@@ -103,9 +103,9 @@ app-home button { color: inherit; }
 .product-card-footer { display: flex; align-items: end; justify-content: space-between; gap: 10px; padding-top: 12px; border-top: 1px solid #eee3da; }
 .product-card-footer > span { color: #5b4d44; font-size: 9px; }
 .product-card-footer small { display: block; margin-bottom: 5px; color: #928177; font-size: 8px; font-weight: 700; letter-spacing: .08em; }
-.product-card-footer button { width: 31px; height: 31px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #e4c7b0; border-radius: 50%; background: transparent; color: var(--accent); cursor: pointer; transition: color .2s ease, background .2s ease; }
-.product-card-footer button:hover { background: var(--accent); color: white; }
-.product-card-footer button ion-icon { font-size: 15px; }
+.product-card-footer a { width: 31px; height: 31px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #e4c7b0; border-radius: 50%; background: transparent; color: var(--accent); transition: color .2s ease, background .2s ease; }
+.product-card-footer a:hover { background: var(--accent); color: white; }
+.product-card-footer a ion-icon { font-size: 16px; }
 .empty-state { padding: 55px 20px; display: grid; justify-items: center; gap: 12px; color: var(--muted); }
 .empty-state > ion-icon { font-size: 25px; }
 .empty-state p { margin: 0; font-family: var(--serif); font-size: 22px; }
@@ -131,6 +131,9 @@ app-home button { color: inherit; }
 .contact-heading > p:not(.eyebrow) { max-width: 360px; margin: 18px 0 0; color: var(--muted); font-size: 11px; line-height: 1.85; }
 .contact-promise { display: flex; align-items: center; gap: 8px; margin-top: 25px; color: var(--accent); font-size: 10px; font-weight: 600; }
 .contact-promise ion-icon { font-size: 16px; }
+.whatsapp-panel { display: grid; align-content: center; justify-items: start; gap: 17px; }
+.whatsapp-panel p { max-width: 340px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.whatsapp-panel > span { color: var(--muted); font-size: 11px; }
 .enquiry-form { display: grid; gap: 15px; }
 .enquiry-form label { display: grid; gap: 7px; color: #4d4038; font-size: 10px; font-weight: 700; }
 .enquiry-form input, .enquiry-form select { width: 100%; height: 42px; padding: 0 11px; border: 1px solid #e4d4c7; border-radius: 2px; outline: 0; background: #fffaf4; color: var(--ink); font-size: 10px; }
@@ -221,7 +224,7 @@ app-home button { color: inherit; }
   .product-card-footer { gap: 5px; padding-top: 9px; }
   .product-card-footer > span { font-size: 8px; line-height: 1.45; }
   .product-card-footer small { font-size: 7px; }
-  .product-card-footer button { width: 27px; height: 27px; }
+  .product-card-footer a { width: 27px; height: 27px; }
   .availability-note { justify-content: flex-start; margin-top: 21px; font-size: 8px; }
   .story-section { grid-template-columns: 1fr; }
   .story-image { min-height: 240px; background-position: center 52%; }

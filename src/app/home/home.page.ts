@@ -9,7 +9,7 @@ import {
   checkmarkCircleOutline,
   flameOutline,
   leafOutline,
-  menuOutline,
+  logoWhatsapp,
   searchOutline,
   shieldCheckmarkOutline,
   sparklesOutline,
@@ -17,7 +17,7 @@ import {
 
 interface Product {
   name: string;
-  type: 'Firewood' | 'Charcoal';
+  type: 'Firewood' | 'Charcoal' | 'Firelighters';
   description: string;
   bestFor: string;
   image: string;
@@ -36,64 +36,75 @@ export class HomePage {
 
   searchTerm = '';
   selectedCategory = 'All products';
-  quoteProduct = '';
-  quoteName = '';
-  quotePhone = '';
-  quoteSent = false;
   readonly currentYear = new Date().getFullYear();
 
-  readonly categories = ['All products', 'Firewood', 'Charcoal'];
+  readonly categories = ['All products', 'Firewood', 'Charcoal', 'Firelighters'];
   readonly products: Product[] = [
     {
-      name: 'Oak',
+      name: 'Bluegum',
       type: 'Firewood',
-      description: 'A dense hardwood with a steady, long-lasting burn.',
-      bestFor: 'Log burners · Open fires',
-      image: 'photo-1581855754164-c545eb607bfc',
-      imageAlt: 'Cut firewood logs stacked together',
-      badge: 'Long burn',
+      description: 'Bluegum firewood for your next braai or home fire.',
+      bestFor: 'Braais · Home fires',
+      image: 'https://static.wixstatic.com/media/876708_dd5b80aab4f2470e9271b61dfcf6db2c~mv2.jpg/v1/fill/w_960,h_1280,al_c,q_85,enc_avif,quality_auto/876708_dd5b80aab4f2470e9271b61dfcf6db2c~mv2.jpg',
+      imageAlt: 'Bluegum braai wood logs',
     },
     {
-      name: 'Ash',
+      name: 'Sekelbos',
       type: 'Firewood',
-      description: 'A dependable all-rounder, valued for its even heat.',
-      bestFor: 'Everyday heating · Stoves',
-      image: 'photo-1672984581785-60e0ff402fd4',
-      imageAlt: 'Rows of cut logs stacked for firewood',
-      badge: 'Customer favourite',
+      description: 'Sekelbos hardwood for South African braais and open fires.',
+      bestFor: 'Braais · Open fires',
+      image: 'https://capetownfirewood.co.za/cdn/shop/products/SekelbosNamibianHardwood1000KGBulk-Sicklebush-1Ton-CapeTownFirewood.jpg?v=1690322704',
+      imageAlt: 'Sekelbos Namibian hardwood firewood',
     },
     {
-      name: 'Birch',
+      name: 'Rooibos',
       type: 'Firewood',
-      description: 'Easy to light, with a bright flame and gentle aroma.',
-      bestFor: 'Kindling up · Cosy evenings',
-      image: 'photo-1529331957114-3043d9a878c6',
-      imageAlt: 'A pile of split firewood ready for use',
+      description: 'Rooibos firewood for braais and open fires.',
+      bestFor: 'Braais · Open fires',
+      image: 'https://www.mothercityfirewood.co.za/cdn/shop/files/Rooibos-Hardwood-Bulk-Dense-Red-Bushwillow-Braaiwood-For-sale-100KG-or-more-near-Cape-Town-by-Mother-City-Firewood.jpg?v=1736069449&width=900',
+      imageAlt: 'Rooibos hardwood firewood logs',
     },
     {
-      name: 'Beech',
+      name: 'Swarthaak',
       type: 'Firewood',
-      description: 'A versatile hardwood for a welcoming, consistent fire.',
-      bestFor: 'Open fires · Wood burners',
-      image: 'photo-1723990073450-7b57bcbfbe13',
-      imageAlt: 'Freshly cut logs piled outdoors',
+      description: 'Swarthaak (black thorn) firewood for braais and open fires.',
+      bestFor: 'Braais · Outdoor cooking',
+      image: 'https://www.mothercityfirewood.co.za/cdn/shop/collections/Swarthaak_Hardwood_Bulk_-_Braai_wood_from_the_Black_Thorn_Acacia_Tree_-_100KG_Firewood_or_more_for_sale_near_Cape_Town.jpg?v=1735820072&width=900',
+      imageAlt: 'Swarthaak black thorn hardwood logs',
     },
     {
-      name: 'Mixed Hardwood',
+      name: 'Kameeldoring',
       type: 'Firewood',
-      description: 'A practical blend of hardwoods for everyday warmth.',
-      bestFor: 'Home heating · Fire pits',
-      image: 'photo-1672984581785-60e0ff402fd4',
-      imageAlt: 'Neatly stacked firewood logs',
+      description: 'Kameeldoring (camel thorn) firewood for braais and fires.',
+      bestFor: 'Braais · Open fires',
+      image: 'https://www.firewoodfarm.co.za/wp-content/uploads/2021/06/IMG_7339-scaled.jpg',
+      imageAlt: 'Kameeldoring camel thorn firewood',
     },
     {
-      name: 'Lumpwood Charcoal',
+      name: 'Mopane (Export Quality)',
+      type: 'Firewood',
+      description: 'Mopane firewood, export quality as specified by Zaahid Firewood.',
+      bestFor: 'Braais · Outdoor cooking',
+      image: 'https://www.wmtrading-nam.com/wp-content/uploads/2023/04/Mopane-Firewood2-1.jpg',
+      imageAlt: 'Mopane firewood logs',
+      badge: 'Export quality',
+    },
+    {
+      name: 'Namibian Hardwood Lumpwood Charcoal',
       type: 'Charcoal',
-      description: 'Natural lumpwood charcoal for your next outdoor cook.',
-      bestFor: 'Barbecues · Outdoor cooking',
-      image: 'photo-1751250302854-72034cfbfca5',
-      imageAlt: 'Glowing charcoal embers on a grill grate',
-      badge: 'Made for the grill',
+      description: 'Namibian hardwood lumpwood charcoal for braais and outdoor cooking.',
+      bestFor: 'Braais · Grilling',
+      image: 'https://namibianhardwood.co.uk/wp-content/uploads/2016/03/restaurant-high-grade-charcoal.webp',
+      imageAlt: 'Namibian hardwood restaurant-grade lumpwood charcoal',
+      badge: 'Hardwood lumpwood',
+    },
+    {
+      name: 'Firelighters',
+      type: 'Firelighters',
+      description: 'Firelighters to help get your firewood or charcoal fire started.',
+      bestFor: 'Firewood · Charcoal',
+      image: 'https://ecoblaze.co.za/assets/firelighters-12box-3.jpg',
+      imageAlt: 'Box of firelighters',
     },
   ];
 
@@ -118,22 +129,26 @@ export class HomePage {
       checkmarkCircleOutline,
       flameOutline,
       leafOutline,
-      menuOutline,
+      logoWhatsapp,
       searchOutline,
       shieldCheckmarkOutline,
       sparklesOutline,
     });
-    this.title.setTitle('Zaahid Firewood | Firewood & Charcoal');
+    this.title.setTitle('Zaahid Firewood | South African Firewood, Charcoal & Firelighters');
     this.meta.updateTag({
       name: 'description',
       content:
-        'Explore firewood and charcoal from Zaahid Firewood. Browse oak, ash, birch, beech and mixed hardwood, and enquire about the right fuel for your fire.',
+        'Browse Bluegum, Sekelbos, Rooibos, Swarthaak, Kameeldoring, export quality Mopane firewood, Namibian Hardwood Lumpwood Charcoal and firelighters from Zaahid Firewood.',
     });
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
-    this.meta.updateTag({ property: 'og:title', content: 'Zaahid Firewood | Firewood & Charcoal' });
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Zaahid Firewood | Firewood, Charcoal & Firelighters',
+    });
     this.meta.updateTag({
       property: 'og:description',
-      content: 'Browse a range of firewood and charcoal for home fires, stoves and outdoor cooking.',
+      content:
+        'Bluegum, Sekelbos, Rooibos, Swarthaak, Kameeldoring and Mopane firewood, Namibian Hardwood Lumpwood Charcoal and firelighters.',
     });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
   }
@@ -142,18 +157,11 @@ export class HomePage {
     this.selectedCategory = category;
   }
 
-  requestProduct(name: string): void {
-    this.quoteProduct = name;
-    this.quoteSent = false;
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  submitEnquiry(): void {
-    const subject = encodeURIComponent(`Product enquiry: ${this.quoteProduct || 'Firewood and charcoal'}`);
-    const body = encodeURIComponent(
-      `Hello Zaahid Firewood,\n\nI'm interested in: ${this.quoteProduct || 'firewood and charcoal'}.\nName: ${this.quoteName}\nPhone: ${this.quotePhone}\n\nPlease get in touch with availability and pricing.`,
-    );
-    window.location.href = `mailto:?subject=${subject}&body=${body}`;
-    this.quoteSent = true;
+  whatsappLink(productName = ''): string {
+    const productMessage = productName
+      ? `I'm interested in ${productName}.`
+      : 'Please share availability and pricing for your products.';
+    const message = `Hello Zaahid Firewood, ${productMessage}`;
+    return `https://wa.me/27621244994?text=${encodeURIComponent(message)}`;
   }
 }
