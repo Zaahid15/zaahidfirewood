@@ -94,7 +94,7 @@ export class HomePage {
       type: 'Charcoal',
       description: 'Namibian hardwood lumpwood charcoal for braais and outdoor cooking.',
       bestFor: 'Braais · Grilling',
-      image: 'https://namibianhardwood.co.uk/wp-content/uploads/2016/03/restaurant-high-grade-charcoal.webp',
+      image: 'https://plus.unsplash.com/premium_photo-1675186939926-ea6bf907a370?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       imageAlt: 'Namibian hardwood restaurant-grade lumpwood charcoal',
       badge: 'Hardwood lumpwood',
     },
@@ -162,6 +162,6 @@ export class HomePage {
       ? `I'm interested in ${productName}.`
       : 'Please share availability and pricing for your products.';
     const message = `Hello Zaahid Firewood, ${productMessage}`;
-    return `https://wa.me/27621244994?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/27631244994?text=${encodeURIComponent(message)}`;
   }
 }
